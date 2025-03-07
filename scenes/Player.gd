@@ -3,12 +3,22 @@ extends CharacterBody2D
 @export var speed: int = 400
 @export var gravity: int = 1200
 @export var jump_speed: int = -400
+@export var max_jumps: int = 2  # Allows double jump
+
+var jump_count: int = 0  # Tracks jumps
 
 
 func get_input():
 	velocity.x = 0
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = jump_speed
+
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = jump_speed
+			jump_count = 1  # First jump
+		elif jump_count < max_jumps:
+			velocity.y = jump_speed
+			jump_count += 1  # Second jump
+
 	if Input.is_action_pressed("right"):
 		velocity.x += speed
 	if Input.is_action_pressed("left"):
@@ -20,6 +30,9 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 
+	if is_on_floor():
+		jump_count = 0
+
 
 func _process(_delta):
 	if not is_on_floor():
@@ -30,7 +43,4 @@ func _process(_delta):
 		$Animator.play("Idle")
 
 	if velocity.x != 0:
-		if velocity.x > 0:
-			$Sprite2D.flip_h = false
-		else:
-			$Sprite2D.flip_h = true
+		$Sprite2D.flip_h = velocity.x < 0

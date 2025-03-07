@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxdd880fshrnw"]
+
+[ext_resource type="Script" path="res://scenes/fallingfish.gd" id="1_bgv2m"]
+[ext_resource type="Texture2D" uid="uid://b45wpn13ajdj4" path="res://assets/kenney_platformerpack/PNG/Tiles/spikes.png" id="2_6tcmx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qss3m"]
+size = Vector2(119, 61.5)
+
+[node name="Spikes" type="RigidBody2D"]
+script = ExtResource("1_bgv2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_6tcmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -34)
+shape = SubResource("RectangleShape2D_qss3m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
