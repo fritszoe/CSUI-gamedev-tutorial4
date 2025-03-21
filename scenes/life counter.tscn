@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ys8qeae8qco"]
+
+[ext_resource type="Script" path="res://scenes/lifelabel.gd" id="1_emlo8"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/Fonts/Raw/continuum bold.ttf" id="1_h47xj"]
+
+[node name="GUI" type="MarginContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h47xj")
+script = ExtResource("1_emlo8")

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c3i7vk0f4kfs7" path="res://scenes/fallArea.tscn" id="7_s82pw"]
 [ext_resource type="PackedScene" uid="uid://bxdd880fshrnw" path="res://scenes/spikes.tscn" id="10_b2cs1"]
 [ext_resource type="PackedScene" uid="uid://bplytw4dva4fq" path="res://scenes/Saw.tscn" id="10_t2qa8"]
-[ext_resource type="Script" path="res://scenes/fall_area_dead.gd" id="10_veu4f"]
+[ext_resource type="PackedScene" uid="uid://c3ys8qeae8qco" path="res://scenes/life counter.tscn" id="13_lr2xl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8a7k5"]
 texture = ExtResource("2_ay75i")
@@ -600,7 +600,7 @@ sources/2 = SubResource("TileSetAtlasSource_w7de7")
 sources/5 = SubResource("TileSetAtlasSource_utl6c")
 sources/6 = SubResource("TileSetAtlasSource_ftg72")
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_wsw0l")]
 position = Vector2(127, -74)
@@ -650,6 +650,9 @@ position = Vector2(2886, -1135)
 script = ExtResource("5_1xsfc")
 obstacle = ExtResource("10_t2qa8")
 
-[node name="deadArea" parent="." instance=ExtResource("7_s82pw")]
-position = Vector2(1231, 1624)
-script = ExtResource("10_veu4f")
+[node name="fallingArea" parent="." instance=ExtResource("7_s82pw")]
+position = Vector2(1225, 1600)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("13_lr2xl")]

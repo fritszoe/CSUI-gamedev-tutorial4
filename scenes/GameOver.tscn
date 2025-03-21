@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bonwa7dg5vdwm"]
+
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/Fonts/Raw/continuum bold.ttf" id="1_oxvth"]
+[ext_resource type="Script" path="res://scenes/selectLevelLinkButton.gd" id="3_y2wx7"]
+
+[node name="GameOver" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 235.0
+offset_right = 833.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.677959, 0.234882, 0.282539, 1)
+theme_override_fonts/font = ExtResource("1_oxvth")
+theme_override_font_sizes/font_size = 128
+text = "You Died"
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 399.0
+offset_right = 719.0
+offset_bottom = 465.0
+theme_override_fonts/font = ExtResource("1_oxvth")
+theme_override_font_sizes/font_size = 64
+text = "Play Again"
+script = ExtResource("3_y2wx7")
+
+[node name="LinkButton2" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 499.0
+offset_right = 726.0
+offset_bottom = 565.0
+theme_override_fonts/font = ExtResource("1_oxvth")
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+script = ExtResource("3_y2wx7")
+
+[connection signal="pressed" from="LinkButton" to="LinkButton" method="_on_pressed" binds= ["SkibidiPomni"]]
+[connection signal="pressed" from="LinkButton2" to="LinkButton2" method="_on_pressed" binds= ["MainMenu"]]
